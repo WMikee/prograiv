@@ -1,5 +1,4 @@
 import os
-import time
 
 class Empleado:
     def __init__(self, nombre: str, id: int, salario_base: float, anios_experiencia: int):
