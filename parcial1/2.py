@@ -24,10 +24,9 @@ class Empleado:
     def to_file(self) -> str:
         return f"{self.id},{self.nombre},{self.salario_base},{self.anios_experiencia}"
 
-    """ Problema por método static """
-    # def from_file(linea: str):
-    #     partes = linea.strip().split(",")
-    #     return Empleado(partes[1], int(partes[0]), float(partes[2]), int(partes[3]))
+    def from_file(linea: str):
+        partes = linea.strip().split(",")
+        return Empleado(partes[1], int(partes[0]), float(partes[2]), int(partes[3]))
 
 
 class GestorEmpleados:
@@ -76,12 +75,13 @@ class GestorEmpleados:
             for e in self.empleados:
                 f.write(e.to_file() + "\n")
 
-    # def cargar_empleados(self, archivo: str):
-    #     if not os.path.exists(archivo):
-    #         return
-    #     with open(archivo, "r", encoding="utf-8") as f:
-    #         for linea in f:
-    #             self.empleados.append(GestorEmpleados.empleados[0].from_file(linea))
+    def cargar_empleados(self, archivo: str):
+        if not os.path.exists(archivo):
+            return
+        with open(archivo, "r", encoding="utf-8") as f:
+            for linea in f:
+                _empleado = Empleado("", 0, 0, 0)
+                self.empleados.append(_empleado.from_file(linea))
 
 
 def menu():
